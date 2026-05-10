@@ -1,0 +1,27 @@
+name: feature-pipeline
+
+on: [push]
+
+permissions:
+  contents: read
+  statuses: write
+  security-events: read
+
+jobs:
+  feature-pipeline:
+    if: github.ref != 'refs/heads/main'
+    uses: rajasekharburri-git-actions/workflows/.github/workflows/feature-nodejs-pipeline.yaml@main
+    with:
+      project: roboshop
+      component: user
+      environment: dev
+    secrets: inherit
+
+  dev-pipeline:
+    if: github.ref == 'refs/heads/main'
+    uses: rajasekharburri-git-actions/workflows/.github/workflows/dev-nodejs-pipeline.yaml@main
+    with:
+      project: roboshop
+      component: user
+      environment: dev
+    secrets: inherit
