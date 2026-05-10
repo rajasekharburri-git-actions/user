@@ -19,7 +19,7 @@ on:
         default: uat
 
 concurrency:
-  group: roboshop-catalogue-nonprod
+  group: roboshop-user-nonprod
   cancel-in-progress: false
 
 permissions:
