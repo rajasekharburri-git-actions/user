@@ -18,5 +18,6 @@ jobs:
     if: github.ref == 'refs/heads/main'
     uses: rajasekharburri-git-actions/workflows/.github/workflows/prod-pipeline.yaml@main
     with:
+      component: user
       version: ${{ inputs.version }}
     secrets: inherit
